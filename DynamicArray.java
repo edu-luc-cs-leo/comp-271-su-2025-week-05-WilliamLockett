@@ -63,17 +63,44 @@ public class DynamicArray {
      *         first occurrence of string.
      */
     public int indexOf(String string) {
-        return -1234;
+        int index = -1; // sets index to -1
+        for (int i = 0; i < this.occupancy; i++) {
+            //the for loop itterates through the array
+            if(this.underlying[i].equals(string)){
+                index = i; 
+                i = this.occupancy;
+                /*
+                 * the if statement is for if i finds a match then
+                 * i is stored in index
+                 * and i becomes occupancy and exits the loop
+                 */
+                
+            }
+        }
+        return index; // returns what is found or -1
     } // method indexOf
 
     /** Method to tell if a string exists in the underlying array */
     public boolean contains(String string) {
-        return false;
+        boolean stringExists = false; //set to false for if nothing is found
+        if(indexOf(string) != -1){ // if indexOf does not return its set value of -1,
+                                   // then stringExists is true
+            stringExists = true;
+        }
+        return stringExists;
     }
 
     /** Method to count how many times a string appears in the underlying array*/
     public int countOf(String string) {
-        return -1234;
+        int countNum = 0; 
+        for (int i = 0; i < this.occupancy; i++) {
+            // for loop iterates through the array 
+            if(this.underlying[i].equals(string)){
+                countNum++;
+            }
+            // if a match is found then countNum goes up.
+        }
+        return countNum;
     }
 
     /** method to remove items from the underlying array */
