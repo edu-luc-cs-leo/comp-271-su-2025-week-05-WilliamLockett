@@ -65,16 +65,16 @@ public class DynamicArray {
     public int indexOf(String string) {
         int index = -1; // sets index to -1
         for (int i = 0; i < this.occupancy; i++) {
-            //the for loop itterates through the array
-            if(this.underlying[i].equals(string)){
-                index = i; 
+            // the for loop itterates through the array
+            if (this.underlying[i].equals(string)) {
+                index = i;
                 i = this.occupancy;
                 /*
                  * the if statement is for if i finds a match then
                  * i is stored in index
                  * and i becomes occupancy and exits the loop
                  */
-                
+
             }
         }
         return index; // returns what is found or -1
@@ -82,20 +82,20 @@ public class DynamicArray {
 
     /** Method to tell if a string exists in the underlying array */
     public boolean contains(String string) {
-        boolean stringExists = false; //set to false for if nothing is found
-        if(indexOf(string) != -1){ // if indexOf does not return its set value of -1,
-                                   // then stringExists is true
+        boolean stringExists = false; // set to false for if nothing is found
+        if (indexOf(string) != -1) { // if indexOf does not return its set value of -1,
+                                     // then stringExists is true
             stringExists = true;
         }
         return stringExists;
     }
 
-    /** Method to count how many times a string appears in the underlying array*/
+    /** Method to count how many times a string appears in the underlying array */
     public int countOf(String string) {
-        int countNum = 0; 
+        int countNum = 0;
         for (int i = 0; i < this.occupancy; i++) {
-            // for loop iterates through the array 
-            if(this.underlying[i].equals(string)){
+            // for loop iterates through the array
+            if (this.underlying[i].equals(string)) {
                 countNum++;
             }
             // if a match is found then countNum goes up.
@@ -105,18 +105,46 @@ public class DynamicArray {
 
     /** method to remove items from the underlying array */
     public String remove(int index) {
-        return "James on the street talking trash about your hotel";
+        String removed = null;
+        if (index >= 0 && index < occupancy) { // makes sure the index is in the array and not outside of it
+            removed = this.underlying[index]; // stores the index in removed
+            for (int i = index; i < occupancy - 1; i++) { // moves elements in the array to the left
+                this.underlying[i] = this.underlying[i + 1];
+            }
+            this.underlying[occupancy - 1] = null; // sets the last index to null
+            occupancy--; // lowers the occupancy count
+        }
+        return removed;
     }
 
-    /** overload remove */ 
+    /** overload remove */
     public String remove(String string) {
-        return "James on the street talking trash about your hotel";
+        String remover = null; // chose the name remover cause I did not want to use removed again
+        int index = indexOf(string); // sets the index to the index in indexOf
+        if (index != -1) { // if index does not = -1
+            remover = remove(index); // remover = remove
+        }
+        return remover;
     }
 
     /** Complete this method */
     public String toString() {
-        return "to be done shortly"; // blatant violation of magic values clause
-                                     // serves as reminder to finish this method
+        String finalResult = "CurrentGuests: ";
+        for (int i = 0; i < occupancy; i++) {
+            finalResult += underlying[i]; // lists all of the current guests using the for loop to iterate through  the list.
+            if (i < occupancy - 1) { // adds a , if there is more guests.
+                finalResult += ",";
+            }
+
+        }
+        finalResult += "] guests=" + occupancy + " rooms=" + underlying.length;
+        return finalResult;
+        /*
+         * I went for a hotel theme here since we have been talking a lot about hotels recently,
+         * using guests, rooms, and CurrentGuests.
+         */
+        // blatant violation of magic values clause
+        // serves as reminder to finish this method
     }
 
 } // class DynamicArray
