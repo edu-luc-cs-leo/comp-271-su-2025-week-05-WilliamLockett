@@ -1,0 +1,3 @@
+# COMP 271 REFLECTION FOR WEEK 04
+
+Somethings I got right in this assignment were all of my methods worked however, I did not add a toString method. I see that now and will continue to add that. Our add(Node node) method looks exactly similar, seeing this gives me hope and a feeling of accomplishment. I feel like I am on the right track now. For the second one, we were slighly different with how we wrote it but again, we both accomplished the same tasks. The same can  be said for all of the other methods. Something that I could've done was that I could've taken better advantage of the methods that I had created instead of having to repeat certain lines of code. I will remember this for future projects. I feel as if I am slowly getting better with each day of coding.
